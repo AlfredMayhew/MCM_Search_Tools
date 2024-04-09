@@ -34,7 +34,7 @@ args = os.sys.argv
 print(f"Supplied arguments: {args[1:]}")
 if len(args) <= 1:
     raise Exception(f"""No arguments provided.
-List the number of structural features of interest. E.g. 'Alcohol=1 Carbonyl=2 C=6',
+List the number of structural features of interest. E.g. 'alcohol=1 C=O=2 C=6',
 
 Accepted features are: {', '.join(func_smarts.keys())}
 
@@ -131,9 +131,9 @@ font = ImageFont.load_default().font
 
 #wrap text
 margin = offset = 5
-for line in textwrap.wrap(titletext, width=int(img.size[0]/font.getsize("a")[0])-margin):
-    draw.text((margin, offset), line,font=font,fill="#0000")
-    offset += font.getsize(line)[1]
+for line in textwrap.wrap(titletext, width=int(img.size[0]/font.getsize("a")[0][0])-margin):
+    draw.text((margin, offset), line,font=ImageFont.load_default(),fill="#0000")
+    offset += font.getsize(line)[0][1]
 img.save('MCM_Search_Result.png')
 
 print("...Complete! Look for `MCM_Search_Result.png`.")

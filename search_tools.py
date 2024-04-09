@@ -11,7 +11,7 @@ def MolToSmilesNoStereo(mol):
     return Chem.MolToSmiles(mol, canonical = True)
                                  
 def MCM_Masses():
-    spec_df = pd.read_csv(masses_path, skiprows=18, delim_whitespace=True,
+    spec_df = pd.read_csv(masses_path, skiprows=18, sep="\s+",
                       header=None, index_col=0, engine="python")
     spec_df.columns = ["SMILES", "ID", "mass"]
     spec_df["Mols"] = spec_df["SMILES"].apply(Chem.MolFromSmiles)
